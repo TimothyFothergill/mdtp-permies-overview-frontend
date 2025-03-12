@@ -200,11 +200,11 @@
             .attr("width", 600)
             .attr("height", 500)
             .append("g")
-            .attr("transform", "translate(250,150)")
+            .attr("transform", "translate(250,250)")
             .selectAll("text")
             .data(words)
             .enter().append("text")
-            .style("font-size", d => d.size + "px")
+            .style("font-size", d => 32 + "px")
             .style("fill", getColor) // Use the fixed color palette
             .attr("text-anchor", "middle")
             .attr("transform", d => `translate(${d.x},${d.y}) rotate(${d.rotate})`)
