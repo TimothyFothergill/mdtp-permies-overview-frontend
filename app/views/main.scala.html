@@ -1,0 +1,30 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @* Here's where we render the page title `String`. *@
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/d3-cloud/build/d3.layout.cloud.js"></script>
+    </head>
+    <body>
+        <main>
+            @* We'll need a banner here.*@
+            <div class="header-banner container two-divs">
+                <div style="align-self:flex-start;">hmrc logo</div>
+                <div style="align-self:flex-end;">mdtp logo</div>
+            </div>
+            @* And here's where we render the `Html` object containing
+            * the page content. *@
+            @content
+        </main>
+        <footer>
+            mdtp 2025©️
+        </footer>
+      <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
+    </body>
+</html>

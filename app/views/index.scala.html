@@ -1,0 +1,214 @@
+@(
+  age18to24       : Int, 
+  age25to34       : Int, 
+  age35to44       : Int, 
+  age45to54       : Int, 
+  age55plus       : Int,
+  buildanddeploy  : Int,
+  ddcops          : Int,
+  infrastructure  : Int,
+  telemetry       : Int,
+  platdocs        : Int,
+  platops         : Int,
+  platsec         : Int,
+  platucd         : Int,
+  platui          : Int
+)
+
+@main("banana") {
+  <h1>MDTP Permies Overview</h1>
+
+  <div class="container">
+    <div id="age_chart_div" class="one-div"></div><br />
+    <div class="two-divs">
+      <div id="team_distribution_chart_div"></div>
+      <div id="permie_skills_chart_div"></div>
+    </div>
+    <div id="wordcloud" class="one-div"><h2>What mythological creatures are in MDTP?</h2><br /></div>
+  </div>
+
+  <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+
+      google.charts.setOnLoadCallback(drawAgeBarChart);
+      google.charts.setOnLoadCallback(drawTeamDistributionPieChart);
+      google.charts.setOnLoadCallback(drawPermieKnowledgePieChart);
+
+      function drawAgeBarChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Age Range');
+        data.addColumn('number', 'Respondents');
+        data.addRows([
+          ['18-24', @age18to24],
+          ['25-34', @age25to34],
+          ['35-44', @age35to44],
+          ['45-54', @age45to54],
+          ['55+',   @age55plus]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Age Range',
+                       'width':'100%',
+                       'height':300
+                      };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.ColumnChart(document.getElementById('age_chart_div'));
+        chart.draw(data, options);
+      }
+
+      function drawTeamDistributionPieChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Team');
+        data.addColumn('number', 'Respondents');
+        data.addRows([
+          ['Build & Deploy',  @buildanddeploy],
+          ['DDCOps',          @ddcops],
+          ['Infrastructure',  @infrastructure],
+          ['Telemetry',       @telemetry],
+          ['PlatDocs',        @platdocs],
+          ['PlatOps',         @platops],
+          ['PlatSec',         @platsec],
+          ['PlatUCD',         @platucd],
+          ['PlatUI',          @platui]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Teams permies have been on',
+                       'width':1000,
+                       'height':500
+                      };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('team_distribution_chart_div'));
+        chart.draw(data, options);
+      }
+
+      function drawPermieKnowledgePieChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Age Range');
+        data.addColumn('number', 'Respondents');
+        data.addRows([
+          ["Agile"                      , 1],
+          ["API"                        , 1],
+          ["Architecture"               , 1],
+          ["AWS"                        , 1],
+          ["Azure"                      , 1],
+          ["Backend-Development"        , 1],
+          ["Business-Context"           , 1],
+          ["Calendar-Management"        , 1],
+          ["Communicating"              , 1],
+          ["Conference-Planning"        , 1],
+          ["Confluence"                 , 1],
+          ["Diagrams"                   , 1],
+          ["Docker"                     , 1],
+          ["Documentation"              , 1],
+          ["Emotional-Intelligence"     , 1],
+          ["Encryption"                 , 1],
+          ["Facilitation"               , 1],
+          ["Flask"                      , 1],
+          ["Fostering-Collaboration"    , 1],
+          ["Frontend-Development"       , 1],
+          ["Future-Planning"            , 1],
+          ["GCP(google cloud platform)" , 1],
+          ["Git"                        , 1],
+          ["Github"                     , 1],
+          ["Go"                         , 1],
+          ["Google-Analytics"           , 1],
+          ["Grafana"                    , 1],
+          ["Graphic-Design"             , 1],
+          ["Heroku"                     , 1],
+          ["HTML/CSS"                   , 1],
+          ["Interviewing"               , 1],
+          ["Java"                       , 1],
+          ["JavaScript"                 , 1],
+          ["Jenkins"                    , 1],
+          ["Jira"                       , 1],
+          ["Kanban"                     , 1],
+          ["Kibana"                     , 1],
+          ["Kubernetes"                 , 1],
+          ["LDAP"                       , 1],
+          ["Line-Management"            , 1],
+          ["Linux"                      , 1],
+          ["Mac"                        , 1],
+          ["Microservices"              , 1],
+          ["Minute-Taking"              , 1],
+          ["Openness"                   , 1],
+          ["Pagerduty"                  , 1],
+          ["Play-Framework"             , 1],
+          ["Python"                     , 1],
+          ["Report-Writing"             , 1],
+          ["Risk-Management"            , 1],
+          ["Ruby"                       , 1],
+          ["Saying-‘No’"                , 1],
+          ["Scala"                      , 1],
+          ["Scrum"                      , 1],
+          ["Slack"                      , 1],
+          ["Spreadsheets"               , 1],
+          ["SSH"                        , 1],
+          ["Stakeholder-Engagement"     , 1],
+          ["SWOT-Analysis"              , 1],
+          ["System-Modelling"           , 1],
+          ["Teams(Microsoft)"           , 1],
+          ["Terraform"                  , 1],
+          ["Waterfall"                  , 1],
+          ["Windows"                    , 1]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Permie skills',
+                       'width':1000,
+                       'height':500
+                      };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('permie_skills_chart_div'));
+        chart.draw(data, options);
+      }
+  </script>
+  <script>
+    // Sample list of words (some repeated)
+    const colorPalette = ["#ff0000", "#00ff00", "#0000ff", "#ff00ff", "#00ffff", "#ff6600"]; // No yellow
+    const container = document.getElementById("wordcloud");
+    const width = container.clientWidth;
+    var wordList = ["donkey","goblin","gremlin","fairy"];
+
+    function getColor() {
+        return colorPalette[Math.floor(Math.random() * colorPalette.length)];
+    }
+
+    // Count word frequencies
+    var wordCounts = {};
+    wordList.forEach(word => wordCounts[word] = (wordCounts[word] || 0) + 1);
+
+    // Convert to array format expected by d3-cloud
+    var words = Object.entries(wordCounts).map(([text, count]) => ({ text, size: count * 10 + 10 }));
+
+    var layout = d3.layout.cloud()
+        .size([600, 500])
+        .words(words)
+        .padding(5)
+        .rotate(() => ~~(Math.random() * 2) * 90)
+        .fontSize(d => d.size)
+        .on("end", draw);
+
+    layout.start();
+
+    function draw(words) {
+        d3.select("#wordcloud").append("svg")
+            .attr("width", 600)
+            .attr("height", 500)
+            .append("g")
+            .attr("transform", "translate(250,150)")
+            .selectAll("text")
+            .data(words)
+            .enter().append("text")
+            .style("font-size", d => d.size + "px")
+            .style("fill", getColor) // Use the fixed color palette
+            .attr("text-anchor", "middle")
+            .attr("transform", d => `translate(${d.x},${d.y}) rotate(${d.rotate})`)
+            .text(d => d.text);
+    }
+  </script>
+}
